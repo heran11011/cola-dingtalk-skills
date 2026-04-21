@@ -1,0 +1,48 @@
+#!/bin/bash
+# Cola DingTalk Skills Installer
+
+set -e
+
+SKILLS_DIR="$HOME/.cola/mods/default/skills"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SOURCE_DIR="$SCRIPT_DIR/skills"
+
+echo "Cola DingTalk Skills Installer"
+echo "=============================="
+echo ""
+
+# Check source
+if [ ! -d "$SOURCE_DIR" ]; then
+    echo "Error: skills/ directory not found."
+    exit 1
+fi
+
+# Check Cola
+if [ ! -d "$HOME/.cola" ]; then
+    echo "Warning: Cola is not installed (~/.cola not found)."
+    echo "Please install Cola first: https://cola.dev"
+    echo ""
+    read -p "Continue anyway? [y/N] " answer
+    if [ "$answer" != "y" ] && [ "$answer" != "Y" ]; then
+        exit 1
+    fi
+fi
+
+# Create target directory
+mkdir -p "$SKILLS_DIR"
+
+# Copy skills
+SKILLS=(dingtalk-setup dingtalk-messages dingtalk-tasks dingtalk-calendar dingtalk-contacts dingtalk-aitables)
+for skill in "${SKILLS[@]}"; do
+    if [ -d "$SOURCE_DIR/$skill" ]; then
+        ACTION="Installed"
+        [ -d "$SKILLS_DIR/$skill" ] && ACTION="Updated"
+        cp -r "$SOURCE_DIR/$skill" "$SKILLS_DIR/"
+        echo "  $ACTION: $skill"
+    fi
+done
+
+echo ""
+echo "Done! Skills installed to: $SKILLS_DIR"
+echo ""
+echo "Now tell Cola: \"帮我连接钉钉\""

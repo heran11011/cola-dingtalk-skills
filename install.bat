@@ -1,0 +1,36 @@
+@echo off
+REM Cola DingTalk Skills Installer for Windows
+
+echo Cola DingTalk Skills Installer
+echo ==============================
+echo.
+
+set "SKILLS_DIR=%USERPROFILE%\.cola\mods\default\skills"
+set "SOURCE_DIR=%~dp0skills"
+
+if not exist "%SOURCE_DIR%" (
+    echo Error: skills\ directory not found.
+    exit /b 1
+)
+
+if not exist "%USERPROFILE%\.cola" (
+    echo Warning: Cola is not installed. Please install Cola first: https://cola.dev
+    echo.
+    set /p "answer=Continue anyway? [y/N] "
+    if /i not "%answer%"=="y" exit /b 1
+)
+
+if not exist "%SKILLS_DIR%" mkdir "%SKILLS_DIR%"
+
+for %%s in (dingtalk-setup dingtalk-messages dingtalk-tasks dingtalk-calendar dingtalk-contacts dingtalk-aitables) do (
+    if exist "%SOURCE_DIR%\%%s" (
+        xcopy /E /I /Y "%SOURCE_DIR%\%%s" "%SKILLS_DIR%\%%s" >nul
+        echo   Installed: %%s
+    )
+)
+
+echo.
+echo Done! Skills installed to: %SKILLS_DIR%
+echo.
+echo Now tell Cola: "帮我连接钉钉"
+pause
