@@ -83,6 +83,17 @@ Cola 会自动：
 - "帮我找一下张三"
 - "查一下 AI 表格的数据"
 
+### 反馈与问题
+
+使用过程中遇到问题？Cola 会自动引导你提交反馈。你也可以直接前往：
+
+- [提交 Issue](https://github.com/heran11011/cola-dingtalk-skills/issues/new)
+
+常见问题：
+- **dws 安装失败**：检查 Node.js 版本（需要 >= 18），或尝试 curl 安装方式
+- **授权失败**：确认企业管理员已开通 CLI 访问权限
+- **命令报错**：运行 `dws --version` 确认版本，附上错误信息提交 Issue
+
 ### 与飞书版的区别
 
 | | Cola Lark Skills | Cola DingTalk Skills |
@@ -171,6 +182,17 @@ Once connected, try:
 - "明天有什么会" (any meetings tomorrow)
 - "帮我找一下张三" (find Zhang San)
 - "查一下 AI 表格的数据" (query AI table data)
+
+### Feedback & Issues
+
+Having trouble? Cola will automatically guide you to submit feedback. You can also go directly to:
+
+- [Submit an Issue](https://github.com/heran11011/cola-dingtalk-skills/issues/new)
+
+Common issues:
+- **dws install fails**: Check Node.js version (>= 18 required), or try the curl install method
+- **Auth fails**: Confirm your organization admin has enabled CLI access
+- **Command errors**: Run `dws --version` to check the version, include error output when submitting an Issue
 
 ### Compared to Lark Version
 
