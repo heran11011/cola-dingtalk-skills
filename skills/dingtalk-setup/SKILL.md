@@ -147,29 +147,46 @@ This should return the current user's info. If it works, everything is connected
 | macOS quarantine | `xattr -d com.apple.quarantine $(which dws)` |
 | Network timeout | Check network, try again |
 
-## Feedback: Report Unresolved Issues
+## Feedback: Report Issues
 
-If the above recovery steps don't work, help the user submit a GitHub Issue:
+If the above recovery steps don't work, help the user submit a GitHub Issue.
 
-1. Collect: error message, OS, `node --version`, `dws --version`, `dws auth status` output
-2. Draft the Issue body:
+### 提交 issue 流程（优先自动提交）
 
-```
-Title: [dingtalk-setup] <one-line error summary>
+**Step 1: 检查 gh CLI 登录态**
 
-**Environment**
-- OS: <Windows/macOS/Linux + version>
-- Node: <version>
-- dws: <version>
-- Cola: <version>
-
-**What happened**
-<paste error output>
-
-**Steps to reproduce**
-1. ...
+```bash
+gh auth status
 ```
 
-3. Tell the user:
-> 这个问题我暂时无法自动修复。你可以在这里反馈：
+**Step 2a: 如果已登录 GitHub → 直接帮用户提 issue**
+
+整理好以下信息，展示给用户确认：
+- 标题：`[dingtalk-setup] <一句话描述问题>`
+- 内容：错误日志、`node --version`、`dws --version`、操作系统、复现步骤
+
+用户确认后，执行：
+
+```bash
+gh issue create --repo heran11011/cola-dingtalk-skills \
+  --title "[dingtalk-setup] 问题标题" \
+  --body "整理好的问题描述"
+```
+
+告诉用户：
+> ✅ 已帮你提交 issue，开发者会收到通知并尽快处理。
+
+**Step 2b: 如果未登录 GitHub → 给链接**
+
+告诉用户：
+> 你的电脑还没有登录 GitHub CLI，我没办法直接帮你提交。
+> 你可以手动在这里提 issue：
 > https://github.com/heran11011/cola-dingtalk-skills/issues/new
+>
+> 或者先登录 GitHub CLI（`gh auth login`），下次我就能直接帮你提交了。
+
+提交 issue 时，引导用户附上：
+- 错误日志（终端输出）
+- Node.js 版本（`node --version`）
+- dws 版本（`dws --version`）
+- 操作系统

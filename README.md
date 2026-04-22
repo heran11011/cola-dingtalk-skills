@@ -206,6 +206,16 @@ Common issues:
 
 ---
 
+### 相关项目 / Related Projects
+
+| 项目 | 说明 |
+|------|------|
+| [cola-lark-skills](https://github.com/heran11011/cola-lark-skills) | Cola 连接飞书，帮你操作飞书（Cola → 飞书） |
+| [cola-feishu-bridge](https://github.com/heran11011/cola-feishu-bridge) | 在飞书中直接跟 Cola 对话（飞书 → Cola） |
+| [cola-dingtalk-skills](https://github.com/heran11011/cola-dingtalk-skills)（本仓库） | Cola 连接钉钉，帮你操作钉钉（Cola → 钉钉） |
+
+---
+
 ## License
 
 MIT
