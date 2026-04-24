@@ -190,3 +190,13 @@ gh issue create --repo heran11011/cola-dingtalk-skills \
 - Node.js 版本（`node --version`）
 - dws 版本（`dws --version`）
 - 操作系统
+
+---
+
+## ⚠️ Security / 安全提示
+
+**OAuth 授权安全：** 执行 `dws auth login` 会在浏览器中打开授权页面。请确认 URL 域名为钉钉官方域名（`login.dingtalk.com` 或 `oauth.dingtalk.com`），不要在非官方页面输入账号密码。
+
+**Token 过期：** dws 的授权 token 有有效期。如果用户反馈"权限不足"、"token expired"、"401"等错误，引导用户重新执行 `dws auth login` 重新授权即可。
+
+**认证信息输出：** 执行 `dws auth status` 验证认证状态时，不要向用户展示完整的 JSON 输出（可能包含 token），只告知认证是否成功。

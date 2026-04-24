@@ -223,6 +223,19 @@ Common issues:
 
 ---
 
+## ⚠️ 安全提示 / Security Notes
+
+- **OAuth 授权**：连接钉钉时会打开浏览器授权页面，请确认 URL 为钉钉官方域名（`login.dingtalk.com`），不要在非官方页面输入密码
+- **Token 过期**：如果遇到"权限不足"或"token expired"错误，重新执行 `dws auth login` 即可
+- **消息发送确认**：所有发送消息的操作都会先让你确认内容，不会自动发送
+- **输入安全**：本技能包通过 shell 命令与 dws CLI 交互，所有用户输入会经过转义处理
+- **OAuth Security**: When connecting DingTalk, verify the browser URL is an official domain (`login.dingtalk.com`) before entering credentials
+- **Token Expiry**: If you encounter "permission denied" or "token expired" errors, re-run `dws auth login`
+- **Message Confirmation**: All message-sending operations require your explicit approval before sending
+- **Input Safety**: This skill pack interacts with dws CLI via shell commands; all user inputs are sanitized
+
+---
+
 ## License
 
 MIT
